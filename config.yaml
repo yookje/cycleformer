@@ -1,0 +1,30 @@
+train_data_path: emb_folder/tsp100_train_small_100k_onehot_10_25_25.pkl #../CycleFormer/tsp100_train_concorde.txt  #_onehot.pkl emb_folder/tsp100_train_small_100k_onehot_10_25_25.pkl #
+val_data_path: emb_folder/tsp100_test_concorde_10_25.pkl #/root/CycleFormer/tsp100_test_concorde.txt #  #
+node_size: 100 #100
+train_batch_size: 80 #40 # [tsp50, tsp100, tsp500, tsp1000]: 80
+val_batch_size: 1280 #16 # [tsp50,tsp100]: 1280, [tsp500, tsp1000]: 128
+test_batch_size: 1280 #1280 #6 #16
+G: 1 #00 #20 #100 #1
+resume_checkpoint: logs/lightning_logs/version_737/checkpoints/TSP100-epoch=97-opt_gap=6.0276.ckpt
+gpus: [0, 1, 2, 3]
+max_epochs: 100  #100
+enc_num_layers: 6 #6 #6 #12
+dec_num_layers: 6
+d_model: 256 #128 #128 #256 #128 #256
+d_ff: 512 #1024 #512
+h: 8
+dropout: 0.1
+smoothing: 0.1
+seed: 1
+lr: 0.5
+betas: [0.9, 0.98]
+eps: 1e-9
+factor: 1.0
+warmup: 400
+encoder_pe: 2D # None, 2D
+decoder_pe: circular PE # None, 1D, circular 
+decoder_lut: memory # shared, unshared, memory
+comparison_matrix: memory # encoder_lut, decoder_lut, memory
+use_start_token : False
+mst_loss_weight : 0.1
+feat_dim : 128
